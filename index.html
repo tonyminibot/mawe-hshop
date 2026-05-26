@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>My hair cut shop — Da Nang, Vietnam</title>
+  <style>
+    :root{
+      --bg:#fafafa;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#125e63;
+      --accent-2:#0f8b7c;
+      --glass: rgba(255,255,255,0.6);
+      --radius:12px;
+      --max-width:1100px;
+      --container-padding:20px;
+      --shadow: 0 6px 18px rgba(16,24,40,0.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #f8fbfb 0%, var(--bg) 100%);
+      color:#111827;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:30px 16px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--max-width);
+      background:transparent;
+      margin:0 auto;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:26px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+    .logo{
+      width:56px;
+      height:56px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      box-shadow: var(--shadow);
+      flex:0 0 56px;
+    }
+    .brand h1{
+      font-size:18px;
+      margin:0;
+      letter-spacing:0.2px;
+    }
+    .brand p{ margin:0; color:var(--muted); font-size:14px; }
+
+    .nav-actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .btn{
+      background:var(--accent);
+      color:white;
+      padding:10px 14px;
+      border-radius:10px;
+      border:0;
+      font-weight:600;
+      cursor:pointer;
+      box-shadow:none;
+    }
+    .btn.ghost{
+      background:transparent;
+      color:var(--accent);
+      border:1px solid rgba(18,94,99,0.12);
+    }
+    main{
+      display:grid;
+      grid-template-columns:1fr 380px;
+      gap:22px;
+      align-items:start;
+    }
+    @media (max-width:920px){
+      main{grid-template-columns:1fr}
+      header{flex-direction:column; align-items:flex-start; gap:12px}
+    }
+
+    /* Hero card */
+    .hero{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+    .hero .text{
+      flex:1;
+    }
+    .eyebrow{
+      color:var(--muted);
+      font-size:13px;
+      margin-bottom:6px;
+      letter-spacing:0.6px;
+      text-transform:uppercase;
+    }
+    .hero h2{
+      margin:0 0 8px 0;
+      font-size:22px;
+    }
+    .hero p{ margin:0 0 14px 0; color:var(--muted) }
+
+    .hero .ctas{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .hero-visual{
+      width:220px;
+      height:140px;
+      border-radius:10px;
+      overflow:hidden;
+      flex:0 0 220px;
+      box-shadow: 0 8px 24px rgba(16,24,40,0.06);
+    }
+    .hero-visual img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+    /* Services */
+    .section{
+      margin-top:18px;
+      display:flex;
+      gap:18px;
+      flex-direction:column;
+    }
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+    @media (max-width:880px){
+      .cards{ grid-template-columns:repeat(2,1fr); }
+    }
+    @media (max-width:520px){
+      .cards{ grid-template-columns:repeat(1,1fr); }
+    }
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      padding:14px;
+      box-shadow:var(--shadow);
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .icon{
+      width:54px;
+      height:54px;
+      border-radius:10px;
+      background:linear-gradient(135deg, rgba(15,139,124,0.08), rgba(18,94,99,0.06));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+      color:var(--accent);
+      font-weight:700;
+      font-size:18px;
+    }
+    .card h4{ margin:0 0 6px 0; font-size:15px; }
+    .card p{ margin:0; color:var(--muted); font-size:13px; }
+
+    /* Gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-top:12px;
+    }
+    @media (max-width:640px){
+      .gallery{ grid-template-columns:repeat(2,1fr); }
+    }
+    .gallery img{
+      width:100%;
+      height:100%;
+      aspect-ratio:1/1;
+      object-fit:cover;
+      border-radius:10px;
+      display:block;
+      box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+    }
+
+    /* Sidebar (booking/contact) */
+    aside{
+      position:relative;
+      top:0;
+    }
+    .panel{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:16px;
+      box-shadow:var(--shadow);
+    }
+    .panel h3{ margin:0 0 10px 0; font-size:16px; }
+    label{ display:block; font-size:13px; color:var(--muted); margin-bottom:6px; }
+    input[type="text"], input[type="email"], input[type="tel"], input[type="datetime-local"], textarea, select{
+      width:100%;
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid rgba(16,24,40,0.06);
+      background:linear-gradient(180deg, #fff, #fbfbfb);
+      font-size:14px;
+      margin-bottom:12px;
+    }
+    textarea{ min-height:86px; resize:vertical; }
+    .small{
+      font-size:13px;
+      color:var(--muted);
+      margin-top:8px;
+    }
+
+    footer{
+      margin-top:22px;
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
+      padding:18px 6px;
+    }
+
+    /* Modal */
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(2,6,23,0.45);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:1000;
+    }
+    .modal{
+      background:var(--card);
+      padding:20px;
+      border-radius:14px;
+      width:clamp(300px, 90%, 420px);
+      box-shadow: 0 20px 50px rgba(2,6,23,0.3);
+      text-align:center;
+    }
+    .modal h4{ margin:0 0 10px 0; }
+    .close{
+      margin-top:12px;
+      background:transparent;
+      border:1px solid rgba(16,24,40,0.06);
+      padding:8px 12px;
+      border-radius:10px;
+      cursor:pointer;
+    }
+
+    /* subtle utility */
+    .muted{ color:var(--muted); font-size:13px; }
+    .divider{ height:1px; background:linear-gradient(90deg, transparent, rgba(16,24,40,0.04), transparent); margin:12px 0; border-radius:99px; }
+  </style>
+</head>
+<body>
+  <div class="wrap" role="main">
+    <header>
+      <div class="brand" aria-label="Brand">
+        <div class="logo" aria-hidden="true">HH</div>
+        <div>
+          <h1>My hair cut shop</h1>
+          <p>Da Nang, Vietnam</p>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <button class="btn" id="bookNowTop">Book Now</button>
+        <button class="btn ghost" id="viewGalleryTop">Gallery</button>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <div class="hero" aria-labelledby="hero-title">
+          <div class="text">
+            <div class="eyebrow">Care • Style • Confidence</div>
+            <h2 id="hero-title">Professional, friendly haircuts in Da Nang</h2>
+            <p>Whether you want a clean everyday cut, a fresh style for a special occasion, or a simple trim — we're here to help. Walk-ins welcome; appointments encouraged.</p>
+            <div class="ctas">
+              <button class="btn" id="bookNow">Book an appointment</button>
+              <button class="btn ghost" id="servicesBtn">View services</button>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <img src="https://source.unsplash.com/collection/888146/800x600?haircut" alt="Stylish haircut preview">
+          </div>
+        </div>
+
+        <div class="section" aria-labelledby="services-title">
+          <h3 id="services-title" style="margin:6px 0 8px 0;">Services</h3>
+          <p class="muted" style="margin:0 0 10px 0;">Common services we provide — choose what fits your needs. Ask in person for custom styling or packages.</p>
+          <div class="cards">
+            <div class="card">
+              <div class="icon">M</div>
+              <div>
+                <h4>Men's cuts</h4>
+                <p>Classic and modern cuts — clipper or scissor work for tidy, tailored looks.</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="icon">W</div>
+              <div>
+                <h4>Women's cuts</h4>
+                <p>Precision cutting and styling to suit textures and everyday wearability.</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="icon">K</div>
+              <div>
+                <h4>Kids</h4>
+                <p>Quick, friendly trims for children in a calm environment.</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="icon">S</div>
+              <div>
+                <h4>Styling</h4>
+                <p>Event styling, blowouts, and finishing to make your look last all day.</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="icon">B</div>
+              <div>
+                <h4>Beard & trims</h4>
+                <p>Beard shaping and detail work to complement your haircut.</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="icon">C</div>
+              <div>
+                <h4>Color & treatments</h4>
+                <p>Basic color work and conditioning treatments available — ask for details.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section" aria-labelledby="gallery-title">
+          <h3 id="gallery-title" style="margin:6px 0 8px 0;">Gallery</h3>
+          <p class="muted" style="margin:0 0 10px 0;">Recent styles and inspiration. Photos represent the kind of work we do.</p>
+          <div class="gallery" id="gallery">
+            <img src="https://source.unsplash.com/featured/600x600/?haircut,barber" alt="Gallery image 1">
+            <img src="https://source.unsplash.com/featured/601x601/?hairstyle,salon" alt="Gallery image 2">
+            <img src="https://source.unsplash.com/featured/602x602/?barber,cut" alt="Gallery image 3">
+            <img src="https://source.unsplash.com/featured/603x603/?hair,style" alt="Gallery image 4">
+            <img src="https://source.unsplash.com/featured/604x604/?haircut,women" alt="Gallery image 5">
+            <img src="https://source.unsplash.com/featured/605x605/?haircut,men" alt="Gallery image 6">
+          </div>
+        </div>
+
+      </section>
+
+      <aside>
+        <div class="panel" aria-labelledby="booking-title">
+          <h3 id="booking-title">Book an appointment</h3>
+          <p class="muted" style="margin-top:0;">Fill this form and we'll get back to you. No personal data is stored — this demo only simulates booking.</p>
+          <form id="bookingForm" onsubmit="return false;">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" placeholder="Full name" required>
+
+            <label for="contact">Phone or email</label>
+            <input id="contact" name="contact" type="text" placeholder="Phone or email" required>
+
+            <label for="service">Service</label>
+            <select id="service" name="service" required>
+              <option value="">Choose a service</option>
+              <option>Men's cuts</option>
+              <option>Women's cuts</option>
+              <option>Kids</option>
+              <option>Styling</option>
+              <option>Beard & trims</option>
+              <option>Color & treatments</option>
+            </select>
+
+            <label for="when">Preferred date & time (optional)</label>
+            <input id="when" name="when" type="datetime-local">
+
+            <label for="notes">Notes (color, style, special requests)</label>
+            <textarea id="notes" name="notes" placeholder="Tell us anything useful..."></textarea>
+
+            <button class="btn" id="submitBooking" type="submit">Request booking</button>
+            <div class="small">We will confirm availability and reply with next steps. Located in Da Nang, Vietnam.</div>
+          </form>
+
+          <div class="divider" aria-hidden="true"></div>
+
+          <div style="display:flex;gap:10px;flex-direction:column;">
+            <div>
+              <strong>Walk-ins:</strong>
+              <div class="muted" style="margin-top:6px;">Welcome when a stylist is available. Appointments recommended for guaranteed time.</div>
+            </div>
+            <div style="margin-top:8px;">
+              <strong>Location:</strong>
+              <div class="muted" style="margin-top:6px;">Da Nang, Vietnam</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div>My hair cut shop — operating in Da Nang, Vietnam.</div>
+      <div style="margin-top:8px;" class="muted">This single-page site is a lightweight demo. Update content or images as needed.</div>
+    </footer>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document" aria-labelledby="modalTitle">
+      <h4 id="modalTitle">Thanks — request sent</h4>
+      <p class="muted" id="modalMsg">We'll contact you soon to confirm your appointment.</p>
+      <button class="close" id="closeModal">Close</button>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      // Elements
+      const bookNow = document.getElementById('bookNow');
+      const bookNowTop = document.getElementById('bookNowTop');
+      const servicesBtn = document.getElementById('servicesBtn');
+      const viewGalleryTop = document.getElementById('viewGalleryTop');
+      const bookingForm = document.getElementById('bookingForm');
+      const modal = document.getElementById('modalBackdrop');
+      const closeModal = document.getElementById('closeModal');
+      const submitBooking = document.getElementById('submitBooking');
+
+      // Scroll helpers
+      function scrollToServices(){
+        const el = document.getElementById('services-title');
+        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+      function scrollToGallery(){
+        const el = document.getElementById('gallery-title');
+        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+
+      servicesBtn.addEventListener('click', scrollToServices);
+      viewGalleryTop.addEventListener('click', scrollToGallery);
+
+      function openBookingModal(message){
+        document.getElementById('modalMsg').textContent = message || "We'll contact you soon to confirm your appointment.";
+        modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden','false');
+      }
+      function closeBookingModal(){
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden','true');
+      }
+
+      // Book now buttons scroll to booking or open modal on mobile
+      function goToBooking(){
+        // If on narrow screens, open the booking panel by focusing first field
+        if (window.innerWidth < 680) {
+          const name = document.getElementById('name');
+          name.focus();
+          name.scrollIntoView({behavior:'smooth', block:'center'});
+        } else {
+          const bookingPanel = document.getElementById('booking-title');
+          if(bookingPanel) bookingPanel.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      }
+      bookNow.addEventListener('click', goToBooking);
+      bookNowTop.addEventListener('click', goToBooking);
+
+      // Form handling (demo only)
+      bookingForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        // Basic validation
+        const name = document.getElementById('name').value.trim();
+        const contact = document.getElementById('contact').value.trim();
+        const service = document.getElementById('service').value;
+        if(!name || !contact || !service){
+          openBookingModal("Please provide your name, contact, and chosen service.");
+          return;
+        }
+        // Simulate sending
+        submitBooking.disabled = true;
+        submitBooking.textContent = 'Sending...';
+        setTimeout(function(){
+          submitBooking.disabled = false;
+          submitBooking.textContent = 'Request booking';
+          // Show confirmation modal
+          openBookingModal("Thanks " + (name.split(' ')[0] || '') + "! We'll contact you at " + contact + " to confirm the appointment.");
+          // Reset form (optional)
+          bookingForm.reset();
+        }, 900);
+      });
+
+      closeModal.addEventListener('click', closeBookingModal);
+      modal.addEventListener('click', function(e){
+        if(e.target === modal) closeBookingModal();
+      });
+
+      // Accessibility: close modal with Esc
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && modal.style.display === 'flex'){
+          closeBookingModal();
+        }
+      });
+
+      // Improve image loading (swap low-res first if needed) - here images come from Unsplash auto
+      // No extra logic required.
+
+    })();
+  </script>
+</body>
+</html>
